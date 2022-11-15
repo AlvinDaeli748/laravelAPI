@@ -15,11 +15,17 @@ use App\Http\Controllers\UserController;
 |
 */
 
+//basic crud
 Route::get('users', [UserController::class, 'index']);
 Route::post('users/store', [UserController::class, 'store']);
 Route::get('users/show/{id}', [UserController::class, 'show']);
 Route::post('users/update/{id}', [UserController::class, 'update']);
 Route::get('users/destroy/{id}', [UserController::class, 'destroy']);
+
+//route app
+Route::post('users/loginUser', [UserController::class, 'loginUser']);
+Route::post('users/registerUser', [UserController::class, 'registerUser']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
