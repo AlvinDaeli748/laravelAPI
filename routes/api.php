@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ActionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,15 @@ Route::get('users/destroy/{id}', [UserController::class, 'destroy']);
 //route app
 Route::post('users/loginUser', [UserController::class, 'loginUser']);
 Route::post('users/registerUser', [UserController::class, 'registerUser']);
+
+Route::get('posts', [PostController::class, 'index']);
+Route::post('posts/store', [PostController::class, 'store']);
+Route::get('posts/show/{id}', [PostController::class, 'show']);
+Route::get('posts/getPostLikeDetails/{id}', [PostController::class, 'getPostLikeDetails']);
+Route::get('posts/getPostCommentDetails/{id}', [PostController::class, 'getPostCommentDetails']);
+Route::post('posts/likePost', [PostController::class, 'likePost']);
+Route::post('posts/unlikePost', [PostController::class, 'unlikePost']);
+Route::post('posts/commentPost', [PostController::class, 'commentPost']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

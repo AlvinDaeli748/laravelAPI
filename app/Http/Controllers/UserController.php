@@ -218,7 +218,7 @@ class UserController extends Controller
                 'password' => 'required',
             ]);
 
-            $data = User::where(['email'=>$request->email, 'password'=>$request->password])->get();
+            // $data = User::where(['email'=>$request->email, 'password'=>$request->password])->get();
 
             if($data){
                 return Helpers::getData(200, 'Success Login');

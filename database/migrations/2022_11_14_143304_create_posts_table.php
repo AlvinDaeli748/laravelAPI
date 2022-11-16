@@ -18,8 +18,8 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('images')->nullable();
             $table->string('caption');
-            $table->unsignedInteger('like_count');
-            $table->unsignedInteger('comment_count');
+            $table->unsignedInteger('like_count')->default(0);
+            $table->unsignedInteger('comment_count')->default(0);
             $table->timestamps();
         });
     }
