@@ -195,7 +195,7 @@ class UserController extends Controller
                 'date_of_birth' => $request->date_of_birth,
             ]);
             
-            $data = User::where('users.id','=',$user->id)->join('posts', 'users.id', '=', 'posts.user_id')->get();
+            $data = User::where('users.id','=',$user->id)->join('profiles', 'users.id', '=', 'profiles.user_id')->get();
 
 
             if($data){
@@ -232,19 +232,37 @@ class UserController extends Controller
         }
     }
 
-    public function getUserProfile()
+    public function getUserProfile($id)
     {
+        $data = User::where('users.id','=',$id)->join('profiles', 'users.id', '=', 'profiles.user_id')->get();
 
+        if($data){
+            return Helpers::getData(200, 'Success', $data);
+        } else {
+            return Helpers::getData(400, 'Failed');
+        }
     }
 
-    public function getUserFollowing()
+    public function getUserFollowing($id)
     {
+        $data = Following::where('user_id','=',$id)->get();
 
+        if($data){
+            return Helpers::getData(200, 'Success', $data);
+        } else {
+            return Helpers::getData(400, 'Failed');
+        }
     }
 
-    public function getUserFollowers()
+    public function getUserFollower($id)
     {
+        $data = Follower::where('user_id','=',$id)->get();
 
+        if($data){
+            return Helpers::getData(200, 'Success', $data);
+        } else {
+            return Helpers::getData(400, 'Failed');
+        }
     }
 
 

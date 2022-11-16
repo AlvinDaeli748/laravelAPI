@@ -28,6 +28,9 @@ Route::get('users/destroy/{id}', [UserController::class, 'destroy']);
 //route app
 Route::post('users/loginUser', [UserController::class, 'loginUser']);
 Route::post('users/registerUser', [UserController::class, 'registerUser']);
+Route::get('users/getUserProfile/{id}', [UserController::class, 'getUserProfile']);
+Route::get('users/getUserFollower/{id}', [UserController::class, 'getUserFollower']);
+Route::get('users/getUserFollowing/{id}', [UserController::class, 'getUserFollowing']);
 
 Route::get('posts', [PostController::class, 'index']);
 Route::post('posts/store', [PostController::class, 'store']);
